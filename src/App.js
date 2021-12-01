@@ -90,7 +90,7 @@ function App() {
       });
       const data = await res.json();
       setErrors(data);
-      console.log("data", errors.error);
+      console.log("data", data);
     }
   }
 
@@ -191,7 +191,7 @@ function App() {
       <div className="container">
         <form id="application_form">
           <div>
-            <p style={{color: 'red', textAlign: 'center'}}>{errors.error}</p>
+            <p style={{color: 'red', textAlign: 'center'}}>{errors.error || errors.received}</p>
           </div>
           {nameForm && (
             <div className="container1">
