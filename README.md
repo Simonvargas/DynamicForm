@@ -19,3 +19,15 @@
     python server.py the other
     ```
 4. Begin the fun!
+
+## Areas of improvement
+
+1. Local storage was not implemented due to time constraint but I've implemented before in other apps.
+
+2. Styling can be better and more user friendly.
+
+3. back button does not go back to previous form yet but you can navigate back and forth via the buttons.
+
+4. Extra mailing address are not yet added to be posted, but that is a quick fix.
+
+5. Due to time constraint, code is not organized. Components folder should be created and the code should have been spread out via different components for more readability.
