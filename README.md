@@ -31,3 +31,9 @@
 4. Extra mailing address are not yet added to be posted, but that is a quick fix.
 
 5. Due to time constraint, code is not organized. Components folder should be created and the code should have been spread out via different components for more readability.
+
+6. When form is submitted, application submitted should be rendered or redirected somewhere.
+
+7. Error handling can be added via frontend to prevent the user from proceeding to the next step and informing them what to fix.
+
+
