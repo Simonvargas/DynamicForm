@@ -1,4 +1,4 @@
-# Liferaft Frontend takehome
+# Liferaft Frontend Assessment
 
 ## Getting started
 1. Clone this repository 
