@@ -20,7 +20,7 @@
     ```
 4. Begin the fun!
 
-## Areas of improvement
+## Areas for improvement
 
 1. Local storage was not implemented due to time constraint but I've implemented before in other apps.
 
