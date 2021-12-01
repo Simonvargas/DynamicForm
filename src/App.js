@@ -158,6 +158,10 @@ function backFromDependent(e){
   e.preventDefault()
   setDependentQuest(false)
   if (getData) {
+    if (spouseFirstName || spouseLastName || spouseMiddleName || spouseDob) {
+      setSpouseForm(true)
+      return;
+    }
     setSpouseQuest(true)
     return;
   }
