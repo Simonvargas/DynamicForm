@@ -132,7 +132,7 @@ function App() {
 function showEither(e) {
   e.preventDefault()
   setEmailForm(!emailForm)
-  if (!getData) {
+  if (getData) {
   setSpouseQuest(true)
   return;
   }
@@ -157,7 +157,7 @@ function showDependent(e) {
 function backFromDependent(e){
   e.preventDefault()
   setDependentQuest(false)
-  if (!getData) {
+  if (getData) {
     setSpouseQuest(true)
     return;
   }
