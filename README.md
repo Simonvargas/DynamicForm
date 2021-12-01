@@ -1,4 +1,4 @@
-# Liferaft Fronend takehome
+# Liferaft Frontend takehome
 
 ## Getting started
 1. Clone this repository 
