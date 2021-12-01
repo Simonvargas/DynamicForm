@@ -16,6 +16,6 @@
 
     ```
     npm start one terminal
-    python server.py
+    python server.py the other
     ```
 4. Begin the fun!
