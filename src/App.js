@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 function App() {
   const [nameForm, setNameForm] = useState(true);
@@ -183,13 +184,26 @@ function App() {
       setDependentQuest(true);
     }
   }
+
+  useEffect(() => {
+    (async function () {
+      const res = await fetch("http://www.cnn.com/");
+      console.log('res', res.js)
+      if (res.ok) {
+        const data = await res.json();
+       console.log('cnn', data)
+      }
+    })();
+  }, []);
   return (
     <div className="body">
       <div>
         <h1>Application</h1>
       </div>
       <div className="container">
+        
         <form id="application_form">
+          
           <div>
             <p style={{color: 'red', textAlign: 'center'}}>{errors.error || errors.received}</p>
           </div>
@@ -254,6 +268,7 @@ function App() {
           )}
 
           {emailForm && (
+           
             <>
               <div>
                 <br></br>
@@ -277,6 +292,7 @@ function App() {
               </button>
               <button onClick={showEither}>Next</button>
             </>
+         
           )}
           {spouseQuest && (
             <>

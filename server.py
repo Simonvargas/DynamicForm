@@ -7,12 +7,17 @@ Note:
     that this code can run without external libraries in a very broad set of
     Python environments.
 """
+from dotenv import load_dotenv
+load_dotenv()
 
 import os
 import datetime as dt
 from threading import Lock
 import cgi
 import json
+import requests
+
+
 
 try:
     from http import HTTPStatus
@@ -25,7 +30,7 @@ except ImportError:
 
 HOST = "localhost"
 PORT = 8888
-
+SECRET_KEY = os.environ.get('SECRET_KEY')
 LOCAL_DIR = os.path.dirname(os.path.abspath(__file__))
 
 CONFIG_PATH = os.path.join(LOCAL_DIR, "application_config_v1.json")
@@ -105,7 +110,11 @@ class ApplicationRequestHandler(BaseHTTPRequestHandler):
         body = self.rfile.read(length)
         payload = json.loads(body.decode("utf-8"))
 
-        print(payload)
+        account = payload['account']
+        email = account['email']
+        applicant = payload['applicant']
+        first_name = applicant['first_name']
+        print(payload['applicant'])
         try:
             validate_payload(payload)
         except Exception as err:
@@ -128,7 +137,20 @@ class ApplicationRequestHandler(BaseHTTPRequestHandler):
         self.send_header("Content-type", "application/json")
         self.end_headers()
         self.wfile.write(b'{"received":"ok"}')
-
+        
+        return requests.post(
+		"https://api.mailgun.net/v3/sandboxbeadc68e3ebf4e3db39106dd526d07b5.mailgun.org/messages",
+		auth=("api", "eba00978627d089d131204e9833b36d8-7b8c9ba8-8ea9452d"),
+    #      files=[
+    #     ('inline[0]', ('health.png', open('health.png', mode='rb').read())),
+    # ],
+		data={"from": "Excited User <mailgun@sandboxbeadc68e3ebf4e3db39106dd526d07b5.mailgun.org>",
+			"to": [email],
+			"subject": "Welcome to our Website",
+			"template": "passwordrecovery",
+			"v:firstname":f"{first_name}",
+   },
+  )
 
 def main():
     print("Starting server at http://{HOST}:{PORT}".format(HOST=HOST, PORT=PORT))
